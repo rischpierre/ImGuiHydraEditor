@@ -102,7 +102,8 @@ void Engine::Initialize()
     VtValue selectionValue(_selTracker);
     _engine.SetTaskContextData(HdxTokens->selectionState, selectionValue);
 
-    _taskController->SetOverrideWindowPolicy(CameraUtilFit);
+    auto camera_conform_policy = std::pair<bool, CameraUtilConformWindowPolicy>(true, CameraUtilConformWindowPolicy::CameraUtilFit);
+    _taskController->SetOverrideWindowPolicy(camera_conform_policy);
 }
 
 TfTokenVector Engine::GetRendererPlugins()
